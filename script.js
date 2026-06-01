@@ -1,30 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Scroll header background change
+
+  /* HEADER SCROLL EFFECT */
   window.addEventListener("scroll", () => {
     const header = document.querySelector("header");
-    if (window.scrollY > 50) {
-      header.style.background = "rgba(0,0,0,.95)";
-    } else {
-      header.style.background = "rgba(0,0,0,.75)";
-    }
+    header.style.background = window.scrollY > 50
+      ? "rgba(0,0,0,.95)"
+      : "rgba(0,0,0,.75)";
+
+    /* PARALLAX HERO IMAGE */
+    const heroImg = document.querySelector(".hero-right img");
+    heroImg.style.setProperty("--parallax", window.scrollY * 0.2 + "px");
   });
 
-  // Hover animations for cards
-  const cards = document.querySelectorAll(
-    ".platform-card, .service-card, .beat-card, .contact-card"
-  );
-
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-      card.style.transform = "translateY(-10px)";
-      card.style.transition = "transform 0.3s ease";
-    });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "translateY(0)";
+  /* FADE-IN SECTIONS */
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
     });
   });
 
-  // Mobile menu toggle
+  sections.forEach(section => observer.observe(section));
+
+  /* MOBILE MENU */
   const menuBtn = document.querySelector(".menu-btn");
   const nav = document.querySelector("nav");
 
