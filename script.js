@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* INTRO FIX */
+  // INTRO FADE OUT (no freezing)
   const intro = document.querySelector(".intro");
-  const body = document.body;
-  setTimeout(() => {
-    if (intro) {
+  if (intro) {
+    setTimeout(() => {
       intro.classList.add("hide");
-      body.style.overflowY = "auto";
-    }
-  }, 2200);
+      document.body.style.overflowY = "auto";
+    }, 2000);
+  }
 
-  /* COLLAPSING HEADER */
-  let lastScroll = 0;
+  // COLLAPSING HEADER
   const header = document.querySelector("header");
+  let lastScroll = 0;
   window.addEventListener("scroll", () => {
     const current = window.scrollY;
     if (current > lastScroll && current > 80) {
@@ -22,31 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScroll = current;
   });
 
-  /* FADE-IN SECTIONS */
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.15 });
-  sections.forEach(section => observer.observe(section));
-
-  /* MOBILE SLIDE-IN MENU */
+  // MOBILE MENU
   const menuBtn = document.querySelector(".menu-btn");
   const nav = document.querySelector("nav");
   if (menuBtn && nav) {
     menuBtn.addEventListener("click", () => {
       nav.classList.toggle("open");
     });
+
+    // close menu when clicking a link
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+      });
+    });
   }
 
-  /* FIRE BAR SIMPLE PULSE (no mic permission) */
-  const fireBar = document.querySelector(".fire-bar");
-  if (fireBar) {
-    let scale = 1;
-    setInterval(() => {
-      scale = scale === 1 ? 1.15 : 1;
-      fireBar.style.transform = `scaleY(${scale})`;
-    }, 1200);
-  }
+  // SECTION FADE-IN
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  sections.forEach(section => observer.observe(section));
 });
