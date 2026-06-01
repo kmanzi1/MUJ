@@ -851,3 +851,51 @@ section, header, footer, .hero, .about, .services, .booking, .contact {
   pointer-events: none;
 }
 
+/* ============================================
+   MOBILE TEXT FIT FIX
+   ============================================ */
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive heading scaling */
+h1, h2, h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+/* Specific fix for large hero and section titles */
+.hero h1,
+section h2 {
+  font-size: clamp(28px, 6vw, 60px);
+  line-height: 1.1;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+/* Ensure sections fit viewport */
+section {
+  max-width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .hero h1,
+  section h2 {
+    font-size: clamp(26px, 8vw, 42px);
+    line-height: 1.2;
+  }
+
+  .hero, .about, .services, .beats, .booking, .contact {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
