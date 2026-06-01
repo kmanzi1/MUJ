@@ -559,60 +559,125 @@ footer {
   }
 }
 
-/* ============================
-   MOBILE FIXES (PHONES)
-   ============================ */
+/* ============================================
+   FULL MOBILE UPGRADE PACK
+   ============================================ */
+
+/* COLLAPSING HEADER */
+header {
+  transition: padding 0.25s ease, background 0.25s ease;
+}
+
+header.shrink {
+  padding: 10px 6%;
+  background: rgba(0,0,0,0.95);
+}
+
+/* MOBILE SLIDE-IN MENU */
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 80px 30px;
+    gap: 25px;
+    transition: right 0.35s ease;
+    z-index: 9999;
+  }
+
+  nav.open {
+    right: 0;
+  }
+
+  nav a {
+    font-size: 18px;
+  }
+}
+
+/* ============================================
+   MOBILE FIXES + SEXY ANIMATIONS
+   ============================================ */
 @media (max-width: 600px) {
 
-  /* Fix header spacing */
+  body {
+    padding-bottom: 100px;
+  }
+
   header {
-    padding: 18px 6%;
+    padding: 16px 5%;
   }
 
-  /* Logo smaller */
   .logo {
-    font-size: 22px;
-    letter-spacing: 2px;
+    font-size: 20px;
+    letter-spacing: 1px;
   }
 
-  /* Hero layout */
+  /* HERO */
   .hero {
     grid-template-columns: 1fr;
-    padding: 140px 6% 60px;
-    gap: 40px;
+    padding: 140px 5% 60px;
+    gap: 35px;
     text-align: center;
   }
 
   .hero-left {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    animation: mobileFadeUp 1.2s ease forwards;
+  }
+
+  @keyframes mobileFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-right img {
+    height: 320px;
+    border-radius: 8px;
+    animation: mobileSlideIn 1.2s ease forwards;
+  }
+
+  @keyframes mobileSlideIn {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   .hero h1 {
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1.1;
   }
 
   .subtitle {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .description {
     font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 30px;
+    max-width: 90%;
   }
 
   .hero-buttons {
     flex-direction: column;
+    width: 100%;
     gap: 12px;
   }
 
-  .hero-right img {
-    height: 380px;
-    border-radius: 8px;
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
   }
 
-  /* About section */
+  /* ABOUT */
   .about {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -620,58 +685,54 @@ footer {
   }
 
   .about img {
-    height: 380px;
+    height: 320px;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Music cards */
-  .platforms {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  /* Beats */
-  .beat-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  /* Services */
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  /* Booking */
-  .booking {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  /* Contact */
+  /* MUSIC / BEATS / SERVICES / CONTACT */
+  .platforms,
+  .beat-grid,
+  .services-grid,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  /* Footer */
+  /* BOOKING */
+  .booking {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* FOOTER */
   footer {
-    padding: 60px 6%;
+    padding: 60px 5%;
   }
 
   .footer-logo {
-    font-size: 32px;
+    font-size: 30px;
   }
 
-  /* Fire bar fix */
+  /* FIRE BAR — MOBILE + BASS REACTIVE */
   .fire-bar {
-    height: 90px;
-    background-size: contain;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('Fire.gif') repeat-x;
+    background-size: cover;
+    z-index: 9999;
+    transform-origin: bottom;
+    animation: firePulse 1.2s ease infinite;
+  }
+
+  @keyframes firePulse {
+    0% { transform: scaleY(1); opacity: 0.85; }
+    50% { transform: scaleY(1.15); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 0.85; }
   }
 }
-
-
-
