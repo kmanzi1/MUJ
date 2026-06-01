@@ -50,3 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
 const fireBar = document.querySelector(".fire-bar");
 
 // simple pulse animation (CSS handles it)
+/* INTRO FIX FOR MOBILE FREEZE */
+document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.querySelector(".intro");
+  const body = document.body;
+
+  // allow scrolling after intro hides
+  setTimeout(() => {
+    if (intro) {
+      intro.classList.add("hide");
+      body.style.overflowY = "auto";
+    }
+  }, 2200);
+});
+
