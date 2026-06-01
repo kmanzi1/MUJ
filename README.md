@@ -1,2 +1,2 @@
 # MUJ
-BOOK an appointment for a studio session
+BOOK a studio session
