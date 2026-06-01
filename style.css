@@ -558,3 +558,120 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================
+   MOBILE FIXES (PHONES)
+   ============================ */
+@media (max-width: 600px) {
+
+  /* Fix header spacing */
+  header {
+    padding: 18px 6%;
+  }
+
+  /* Logo smaller */
+  .logo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  /* Hero layout */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 140px 6% 60px;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-right img {
+    height: 380px;
+    border-radius: 8px;
+  }
+
+  /* About section */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about img {
+    height: 380px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Music cards */
+  .platforms {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Beats */
+  .beat-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Booking */
+  .booking {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 60px 6%;
+  }
+
+  .footer-logo {
+    font-size: 32px;
+  }
+
+  /* Fire bar fix */
+  .fire-bar {
+    height: 90px;
+    background-size: contain;
+  }
+}
+
+
+
