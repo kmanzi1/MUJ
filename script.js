@@ -46,27 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.classList.toggle("open");
   });
 
-  /* FIRE BAR BASS REACTIVITY */
-  const fireBar = document.querySelector(".fire-bar");
+  /* FIRE BAR — NO MIC PERMISSION */
+const fireBar = document.querySelector(".fire-bar");
 
-  if (navigator.mediaDevices) {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-      const audioCtx = new AudioContext();
-      const analyser = audioCtx.createAnalyser();
-      const mic = audioCtx.createMediaStreamSource(stream);
-      mic.connect(analyser);
-
-      const data = new Uint8Array(analyser.frequencyBinCount);
-
-      function pulse() {
-        analyser.getByteFrequencyData(data);
-        const bass = data.slice(0, 20).reduce((a,b) => a + b) / 20;
-        const scale = 1 + bass / 200;
-        fireBar.style.transform = `scaleY(${scale})`;
-        requestAnimationFrame(pulse);
-      }
-
-      pulse();
-    });
-  }
-});
+// simple pulse animation (CSS handles it)
